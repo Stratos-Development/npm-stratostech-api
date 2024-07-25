@@ -13,6 +13,15 @@ class ApiClient {
         this.token = new TokenEndpoints(this.client);
     }
 
+    async get(endpoint) {
+        try {
+            const response = await this.client.get(endpoint);
+            return response.data;
+        } catch (error) {
+            this.handleError(error);
+        }
+    }
+
     async Advice() {
         return this.get('/advice');
     }
@@ -49,15 +58,6 @@ class ApiClient {
         return this.get('/rfact');
     }
 
-    async get(endpoint) {
-        try {
-            const response = await this.client.get(endpoint);
-            return response.data;
-        } catch (error) {
-            this.handleError(error);
-        }
-    }
-
     handleError(error) {
         console.error('API Request Error:');
         if (error.response) {
@@ -75,6 +75,15 @@ class ImageEndpoints {
         this.client = client;
     }
 
+    async get(endpoint) {
+        try {
+            const response = await this.client.get(endpoint);
+            return response.data;
+        } catch (error) {
+            this.handleError(error);
+        }
+    }
+
     async EightBall() {
         return this.get('/img/8ball');
     }
@@ -85,15 +94,6 @@ class ImageEndpoints {
 
     async Roll() {
         return this.get('/img/roll');
-    }
-
-    async get(endpoint) {
-        try {
-            const response = await this.client.get(endpoint);
-            return response.data;
-        } catch (error) {
-            this.handleError(error);
-        }
     }
 
     handleError(error) {
@@ -113,6 +113,15 @@ class TokenEndpoints {
         this.client = client;
     }
 
+    async get(endpoint) {
+        try {
+            const response = await this.client.get(endpoint);
+            return response.data;
+        } catch (error) {
+            this.handleError(error);
+        }
+    }
+
     async list() {
         return this.get('/token/list');
     }
@@ -122,7 +131,7 @@ class TokenEndpoints {
             const response = await this.client.post("/token/check", { key, token, project });
             return response.data;
         } catch (error) {
-            if (error.code === "ERR_BAD_REQUEST") return "Invalid Request"
+            if (error.code === "ERR_BAD_REQUEST") return "Invalid Request";
             this.handleError(error);
         }
     }
@@ -130,15 +139,6 @@ class TokenEndpoints {
     async Reroll(uuid) {
         try {
             const response = await this.client.post("/token/reroll", { uuid });
-            return response.data;
-        } catch (error) {
-            this.handleError(error);
-        }
-    }
-
-    async get(endpoint) {
-        try {
-            const response = await this.client.get(endpoint);
             return response.data;
         } catch (error) {
             this.handleError(error);

@@ -22,4 +22,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm ci
-          npx auto shipit
+          npm publish --access public

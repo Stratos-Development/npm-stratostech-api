@@ -3,7 +3,7 @@ const axios = require("axios");
 class ApiClient {
     constructor(token) {
         this.client = axios.create({
-            baseURL: "https://api.stratostech.xyz/v4/",
+            baseURL: "https://api.stratostech.dev/v4/",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token
